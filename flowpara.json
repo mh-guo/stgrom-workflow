@@ -1,0 +1,9 @@
+{
+  "target_temp": 200, 
+  "target_pres": 50000,  
+  "work_base_dir": "/home/minghao/workflow/stgrom/test/stg_std/",
+  "ti_path": "t",
+  "conf_lmp":"beta.lmp",
+  "ens": "npt-xy",
+  "if_liquid": false
+}
