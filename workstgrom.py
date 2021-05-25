@@ -96,17 +96,18 @@ def STG_start(start_info):
     print(start_info)
     work_base_abs_dir = start_info['work_base_abs_dir']
     dag_work_dir = start_info['dag_work_dir']
-    job_work_dir = os.path.join(dag_work_dir,'new_job')#, 'STG_gen''new_job'
+    
     cwd = os.getcwd()
     os.chdir(work_base_abs_dir)
     if os.path.isdir(dag_work_dir) is False:
-        os.mkdir(dag_work_dir)
-    if os.path.isdir(job_work_dir) is False:
-        os.mkdir(job_work_dir)
+            os.mkdir(dag_work_dir)
+    for i in range(100):
+        job_work_dir = os.path.join(dag_work_dir,'new_job.%03d'%i)#, 'STG_gen''new_job'
+        if os.path.isdir(job_work_dir) is False:
+            os.mkdir(job_work_dir)
+            break
     #equi.make_task(job_work_dir, task_jdata)
     os.chdir(cwd)
-    if os.path.isdir(job_work_dir) is False:
-        os.mkdir(job_work_dir)
     os.chdir(job_work_dir)
     #os.chdir(job_work_dir)
     os.system('ln -s '+work_base_abs_dir+'/generate_raw.py '+job_work_dir)
